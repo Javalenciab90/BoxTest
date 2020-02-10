@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MobilBoxTest</string>
+    <string name="error_connection">Connection Problem</string>
+    <string name="footerButton_name">Delete All</string>
+    <string name="refreshAllPosts">Refresh</string>
+</resources>
