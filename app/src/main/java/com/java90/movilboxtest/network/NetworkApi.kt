@@ -32,6 +32,5 @@ interface NetworkApi {
 
             return retrofit.create(NetworkApi::class.java)
         }
-
     }
 }

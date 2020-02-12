@@ -8,6 +8,7 @@ import com.java90.movilboxtest.repositories.NetworkRepository
 import com.java90.movilboxtest.repositories.RoomRepository
 import com.java90.movilboxtest.vo.Resource
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
@@ -15,7 +16,6 @@ class PostMainViewModel(application: Application) : AndroidViewModel(application
 
     private val networkRepository: NetworkRepository = NetworkRepository(application)
     private val roomRepository: RoomRepository = RoomRepository(application)
-
 
     val fetchListPost = liveData(IO){
         Log.d("TAG", "Fetch liveData: " + Thread.currentThread().name)
@@ -27,21 +27,9 @@ class PostMainViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun getListPost() : LiveData<List<Post>> {
-        return roomRepository.loadAllPostFromDatabase()
-    }
-
-    fun deletePost(post: Post) {
+    fun insertToFavorites(post:Post) {
         CoroutineScope(IO).launch {
-            Log.d("TAG", "Delete Post: " + Thread.currentThread().name)
-            roomRepository.deletePostFromDatabase(post)
-        }
-    }
-
-    fun deleteAllPosts() {
-        Log.d("TAG", "Delete All: " + Thread.currentThread().name)
-        CoroutineScope(IO).launch {
-            roomRepository.deleteAllPostsFromDatabase()
+            roomRepository.insertPostInDatabase(post)
         }
     }
 

@@ -6,13 +6,10 @@ import androidx.room.*
 @Dao
 interface PostDao {
 
-    @Query("SELECT count(*) FROM post_table")
-    suspend fun checkEmpty() : Int
-
     @Query("SELECT * FROM post_table")
     fun loadAll(): LiveData<List<Post>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(post: Post)
 
     @Delete

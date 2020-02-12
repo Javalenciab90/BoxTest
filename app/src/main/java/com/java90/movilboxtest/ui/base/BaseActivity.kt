@@ -17,7 +17,6 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun getViewID(): Int
 
     fun setTitleActionBar(titleActionBar: String) {
-        setSupportActionBar(toolBar)
         supportActionBar!!.title = titleActionBar
     }
 

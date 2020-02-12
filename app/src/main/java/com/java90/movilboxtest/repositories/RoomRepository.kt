@@ -10,6 +10,16 @@ class RoomRepository(application: Application) {
 
     private val postsDao: PostDao = PostDatabase.getDatabase(application).postDao()
 
+    private val postListFavorites: LiveData<List<Post>>
+
+    init {
+        postListFavorites = postsDao.loadAll()
+    }
+
+    fun loadAllPostFromDatabase() : LiveData<List<Post>> {
+        return postListFavorites
+    }
+
     suspend fun insertPostInDatabase(post: Post){
         postsDao.insert(post)
     }
@@ -21,9 +31,4 @@ class RoomRepository(application: Application) {
     suspend fun deleteAllPostsFromDatabase(){
         postsDao.deleteAll()
     }
-
-    fun loadAllPostFromDatabase() : LiveData<List<Post>> = postsDao.loadAll()
-
-    suspend fun databaseIsEmpty() : Int = postsDao.checkEmpty()
-
 }

@@ -1,11 +1,11 @@
-package com.java90.movilboxtest.ui
+package com.java90.movilboxtest.ui.view
 
 import android.os.Bundle
 import com.java90.movilboxtest.R
-import com.java90.movilboxtest.ui.PostMainAdapter.Companion.KEY_BODY
-import com.java90.movilboxtest.ui.PostMainAdapter.Companion.KEY_ID
-import com.java90.movilboxtest.ui.PostMainAdapter.Companion.KEY_TITLE
-import com.java90.movilboxtest.ui.PostMainAdapter.Companion.KEY_USER_ID
+import com.java90.movilboxtest.ui.adapters.PostMainAdapter.Companion.KEY_BODY
+import com.java90.movilboxtest.ui.adapters.PostMainAdapter.Companion.KEY_ID
+import com.java90.movilboxtest.ui.adapters.PostMainAdapter.Companion.KEY_TITLE
+import com.java90.movilboxtest.ui.adapters.PostMainAdapter.Companion.KEY_USER_ID
 import com.java90.movilboxtest.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail_post.*
 
@@ -14,6 +14,8 @@ class DetailPostActivity : BaseActivity() {
     override fun getViewID(): Int = R.layout.activity_detail_post
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         val userId = intent.getStringExtra(KEY_USER_ID)!!.toString()
         val id = intent.getStringExtra(KEY_ID)!!.toString()

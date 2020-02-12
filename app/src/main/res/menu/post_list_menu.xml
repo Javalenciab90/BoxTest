@@ -4,14 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/refreshAllPosts"
-        android:title="@string/refreshAllPosts"
+        android:id="@+id/favoritesPosts"
+        android:title="@string/favoritesPosts"
         app:showAsAction="always|collapseActionView"
-        android:icon="@drawable/ic_refresh_black_24dp"/>
-
-    <item
-        android:id="@+id/deleteAllPosts"
-        android:title="deleteAll"/>
-
+        android:icon="@drawable/icon_favorite_list_post"/>
 
 </menu>
