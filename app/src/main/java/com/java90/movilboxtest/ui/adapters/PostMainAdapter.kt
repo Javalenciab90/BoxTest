@@ -26,6 +26,10 @@ class PostMainAdapter(private val context: Context, listener: OnFavoriteClickLis
         notifyDataSetChanged()
     }
 
+    fun deleteAllItems() {
+        listPost.clear()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.row_item_post, parent, false)
         return ViewHolder(view)

@@ -29,6 +29,7 @@ class PostMainActivity : BaseActivity(), OnFavoriteClickListener {
     }
 
     private lateinit var adapterMain: PostMainAdapter
+    var refreshTimes = 0
 
     override fun getViewID(): Int = R.layout.activity_post_main
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,12 +37,26 @@ class PostMainActivity : BaseActivity(), OnFavoriteClickListener {
 
         setSupportActionBar(toolBar)
         setTitleActionBar("Post List")
+        setUpAdapter()
+        swipeToRefreshPosts()
+    }
 
+    private fun setUpAdapter() {
         adapterMain = PostMainAdapter(this, this)
         recyclerViewMain.layoutManager = LinearLayoutManager(this)
         recyclerViewMain.adapter = adapterMain
-
         fetchDataFromNetwork()
+    }
+
+    private fun swipeToRefreshPosts() {
+        swipeRefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.secondaryLightColor))
+        swipeRefresh.setColorSchemeColors(Color.WHITE)
+        swipeRefresh.setOnRefreshListener {
+            adapterMain.deleteAllItems()
+            refreshTimes =+ refreshTimes + 5
+            setUpAdapter()
+            swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun fetchDataFromNetwork() {

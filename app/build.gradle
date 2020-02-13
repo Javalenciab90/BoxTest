@@ -60,4 +60,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // CardView
     implementation "com.android.support:cardview-v7:$cardView_version"
+    //Swipe Refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 }
