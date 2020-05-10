@@ -11,18 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.view.FavoritesActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.view.PostMainActivity" />
-        </activity>
-        <activity android:name=".ui.view.DetailPostActivity"
-            android:theme="@style/AppTheme2">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.view.PostMainActivity" />
-        </activity>
-        <activity android:name=".ui.view.PostMainActivity">
+        <activity android:name=".ui.view.PostsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
