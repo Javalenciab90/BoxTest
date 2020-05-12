@@ -39,5 +39,9 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.java90.movilboxtest.ui.view.fragments.PostFragment"
-        android:label="PostFragment" />
+        android:label="PostFragment" >
+        <argument
+            android:name="post"
+            app:argType="com.java90.movilboxtest.models.Post" />
+    </fragment>
 </navigation>
