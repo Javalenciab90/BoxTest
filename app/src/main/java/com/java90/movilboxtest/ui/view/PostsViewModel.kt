@@ -25,4 +25,14 @@ class PostsViewModel(private val postsRepository: PostRepository) : ViewModel() 
             allPosts.postValue(Resource.Failure(e.message.toString()))
         }
     }
+
+    fun getFavoritesPosts() = postsRepository.getAllFavoritesPosts()
+
+    fun insertPost(post: Post) = viewModelScope.launch {
+        postsRepository.insertPost(post)
+    }
+
+    fun deletePost(post: Post) = viewModelScope.launch {
+        postsRepository.deletePost(post)
+    }
 }

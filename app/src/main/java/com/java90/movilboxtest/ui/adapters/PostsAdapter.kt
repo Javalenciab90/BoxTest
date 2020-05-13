@@ -56,4 +56,5 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
     fun setOnItemClickListener(listener: (Post) -> Unit) {
         onItemCLickListener = listener
     }
+
 }

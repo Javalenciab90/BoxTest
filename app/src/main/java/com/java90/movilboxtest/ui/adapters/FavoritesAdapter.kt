@@ -1,5 +1,6 @@
 package com.java90.movilboxtest.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.java90.movilboxtest.R
 import com.java90.movilboxtest.models.Post
+import com.java90.movilboxtest.ui.view.PostsViewModel
+import kotlinx.android.synthetic.main.row_item_post.view.*
 
-class FavoritesAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
+class FavoritesAdapter(private val viewModel: PostsViewModel) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    private val TYPE_FOOTER = 0
-    private val TYPE_ITEMS = 1
+    private val TYPE_FOOTER = 1
+    private val TYPE_ITEMS = 0
 
     private val differCallback = object : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
@@ -28,7 +31,8 @@ class FavoritesAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     override fun getItemViewType(position: Int): Int {
         return when(position) {
-            differ.currentList.size+1 -> {TYPE_FOOTER}
+            in 0 until differ.currentList.size -> {TYPE_ITEMS}
+            differ.currentList.size -> {TYPE_FOOTER}
             else -> {TYPE_ITEMS}
         }
     }
@@ -46,11 +50,12 @@ class FavoritesAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
         }
     }
 
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int = differ.currentList.size+1
 
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         return when(holder) {
             is FooterViewHolder -> {
+                Log.d("TAG", "Recycle Position: $position")
                 holder.bin("MyFooter")
             }
             is ItemsViewHolder -> {
@@ -63,15 +68,25 @@ class FavoritesAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     inner class FooterViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {
         override fun bin(item: String) {
-            TODO("Not yet implemented")
-        }
+            itemView.apply {
+                setOnClickListener {
 
-    }
+                    }
+                }
+            }
+        }
 
     inner class ItemsViewHolder(itemView: View) : BaseViewHolder<Post>(itemView) {
         override fun bin(item: Post) {
-            TODO("Not yet implemented")
+            itemView.apply {
+                textView_title.text = item.title
+            }
         }
+    }
+
+    private var onItemClickListener : ((Post) -> Unit)?= null
+    fun setOnClickListener(listener: (Post) -> Unit) {
+        onItemClickListener = listener
     }
 
 }
