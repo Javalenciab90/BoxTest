@@ -2,10 +2,12 @@ package com.java90.movilboxtest.ui.view
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.java90.movilboxtest.models.Post
 import com.java90.movilboxtest.repositories.PostRepository
 import com.java90.movilboxtest.utils.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PostsViewModel(private val postsRepository: PostRepository) : ViewModel() {
@@ -31,6 +33,11 @@ class PostsViewModel(private val postsRepository: PostRepository) : ViewModel() 
     fun insertPost(post: Post) = viewModelScope.launch {
         postsRepository.insertPost(post)
     }
+
+    fun isFavoritePost(id: Int) = viewModelScope.launch {
+       postsRepository.isFavorite(id)
+    }
+
 
     fun deletePost(post: Post) = viewModelScope.launch {
         postsRepository.deletePost(post)

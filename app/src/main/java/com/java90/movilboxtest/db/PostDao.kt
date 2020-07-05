@@ -13,6 +13,9 @@ interface PostDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPost(post: Post)
 
+    @Query("SELECT EXISTS (SELECT 1 FROM posts WHERE id=:id)")
+    suspend fun isFavorite(id: Int) : Int
+
     @Delete
     suspend fun deletePost(post: Post)
 

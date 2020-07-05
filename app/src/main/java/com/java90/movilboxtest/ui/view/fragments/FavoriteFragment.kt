@@ -70,7 +70,7 @@ class FavoriteFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        favoriteAdapter = FavoritesAdapter(viewModel)
+        favoriteAdapter = FavoritesAdapter()
         rvFavorites.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = favoriteAdapter

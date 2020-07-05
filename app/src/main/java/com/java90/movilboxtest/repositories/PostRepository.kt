@@ -13,5 +13,7 @@ class PostRepository(private val db: PostDatabase) {
 
     suspend fun insertPost(post: Post) = db.postDao().insertPost(post)
 
+    suspend fun isFavorite(id: Int) = db.postDao().isFavorite(id)
+
     suspend fun deletePost(post: Post) = db.postDao().deletePost(post)
 }

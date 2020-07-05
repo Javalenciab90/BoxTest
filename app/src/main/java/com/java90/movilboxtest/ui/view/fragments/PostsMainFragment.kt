@@ -1,6 +1,7 @@
 package com.java90.movilboxtest.ui.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -81,7 +82,7 @@ class PostsMainFragment : BaseFragment() {
 
 
     private fun initRecyclerView() {
-        postAdapter = PostsAdapter()
+        postAdapter = PostsAdapter(viewModel)
         rvPostMain.apply {
             adapter = postAdapter
             layoutManager = LinearLayoutManager(activity)

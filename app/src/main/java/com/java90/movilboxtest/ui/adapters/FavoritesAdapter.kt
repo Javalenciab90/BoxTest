@@ -12,7 +12,7 @@ import com.java90.movilboxtest.models.Post
 import com.java90.movilboxtest.ui.view.PostsViewModel
 import kotlinx.android.synthetic.main.row_item_post.view.*
 
-class FavoritesAdapter(private val viewModel: PostsViewModel) : RecyclerView.Adapter<BaseViewHolder<*>>() {
+class FavoritesAdapter() : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     private val TYPE_FOOTER = 1
     private val TYPE_ITEMS = 0

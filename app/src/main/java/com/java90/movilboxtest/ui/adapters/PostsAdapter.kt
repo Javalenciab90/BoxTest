@@ -1,5 +1,6 @@
 package com.java90.movilboxtest.ui.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.java90.movilboxtest.R
 import com.java90.movilboxtest.models.Post
+import com.java90.movilboxtest.ui.view.PostsViewModel
 import kotlinx.android.synthetic.main.row_item_post.view.*
 
-class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
+class PostsAdapter(private val viewModel: PostsViewModel) : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
 
     private val differCallback = object : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
@@ -40,6 +42,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bin(post: Post) {
+
             itemView.apply {
                 textView_title.text = post.title
 
