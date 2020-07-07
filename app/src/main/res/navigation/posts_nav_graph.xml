@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/postsMainFragment"
-        android:name="com.java90.movilboxtest.ui.view.fragments.PostsMainFragment"
+        android:name="com.java90.movilboxtest.presentation.view.fragments.postlist.PostsListFragment"
         android:label="PostsMainFragment" >
         <action
             android:id="@+id/action_postsMainFragment_to_favoriteFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.java90.movilboxtest.ui.view.fragments.FavoriteFragment"
+        android:name="com.java90.movilboxtest.presentation.view.fragments.postfavorite.FavoriteFragment"
         android:label="FavoriteFragment" >
         <action
             android:id="@+id/action_favoriteFragment_to_postFragment"
@@ -38,10 +38,10 @@
     </fragment>
     <fragment
         android:id="@+id/postFragment"
-        android:name="com.java90.movilboxtest.ui.view.fragments.PostFragment"
+        android:name="com.java90.movilboxtest.presentation.view.fragments.postdetail.PostFragment"
         android:label="PostFragment" >
         <argument
             android:name="post"
-            app:argType="com.java90.movilboxtest.models.Post" />
+            app:argType="com.java90.movilboxtest.domain.models.Post" />
     </fragment>
 </navigation>
